@@ -30,9 +30,9 @@ You can make it shorter like below if you don't need the test bagfile,
 You can also delete opencv part if you don't need.
 ### 2.5 Modify the script file
 If you use other image name to build instead of "lsdslam:latest", you need to take this step.  
-	@./run_docker.sh  
-	16 lsdslam:latest  
-	→　{your image name}  
+		@./run_docker.sh
+		16 lsdslam:latest
+		→　{your image name}
 Also, you need to fix your webcam in the script file.  
 + Using your webcam  
 Make sure line 15 "--device=/dev/video1:/dev/video0 \".
