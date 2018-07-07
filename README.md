@@ -34,7 +34,7 @@ You can also delete opencv part if you don't need.
 If you use other image name to build instead of "lsdslam:latest", you need to take this step.  
 
 @./run_docker.sh
-16 lsdslam:latest
+16 lsdslam:latest  
 →　{your image name}
 
 Also, you need to fix your webcam in the script file.  
