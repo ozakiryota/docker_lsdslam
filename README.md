@@ -1,4 +1,4 @@
-# Doker_lsdslam
+# doker_lsdslam
 
 A dockerfile for LSD-SLAM
 
