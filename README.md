@@ -33,7 +33,7 @@ You can also delete opencv part if you don't need.
 ### 2.5 Modify the script file
 If you use other image name to build instead of "lsdslam:latest", you need to take this step.  
 
-@./run_docker.sh
+@./run_docker.sh  
 16 lsdslam:latest  
 →　{your image name}
 
@@ -43,8 +43,8 @@ Make sure line 15 "--device=/dev/video1:/dev/video0 \".
 + Using just bagfile, not your webcam  
 Delete line 15.
 ### 3. Run
-		(cd ~/docker_ws/lsdslam)
-		./run_docker.sh lsdslam:latest	//use your image name insted of "lsdslam:latest"
+		($ cd ~/docker_ws/lsdslam)
+		$ ./run_docker.sh lsdslam:latest	//use your image name insted of "lsdslam:latest"
 ### 4. Quit
 Ctrl+c → Ctrl+d
 ## Other things
