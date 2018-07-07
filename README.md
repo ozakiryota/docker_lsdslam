@@ -48,5 +48,5 @@ Delete line 15.
 ### 4. Quit
 Ctrl+c → Ctrl+d
 ## Other things
-You should swap "camera.yaml".  
+You should swap "camera.yaml" depending on your webcam.  
 You can get it by camera_calibration from ROS.
