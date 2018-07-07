@@ -17,8 +17,9 @@ You need to install "Recuirements" above.
 ### 1.5 Modify the Dockerfile depending on your want
 The defalt work the Docker does first when it is run is live_slam with your own camera.  
 You can change to using the test bagfile, your own bagfile... by modify Dockerfile  
-	@Dockerfile  
-	line 113~end delete or add "#" to each line
+
+@Dockerfile
+line 113~end delete or add "#" to each line
 ### 2. Docker build
 		($ cd ~/docker_ws/lsdslam)
 		$ docker build -t lsdslam:latest	//you can change the image name
