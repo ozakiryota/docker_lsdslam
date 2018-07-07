@@ -47,3 +47,6 @@ Delete line 15.
 		./run_docker.sh lsdslam:latest	//use your image name insted of "lsdslam:latest"
 ### 4. Quit
 Ctrl+c → Ctrl+d
+## Other things
+You should swap "camera.yaml".  
+You can get it by camera_calibration from ROS.
