@@ -135,31 +135,31 @@ RUN source /home/rosbuild_ws/setup.bash && rosmake lsd_slam
 RUN rm /bin/sh && mv /bin/sh_tmp /bin/sh
 
 ########## Running comands ##########
-RUN apt-get update && apt-get install -y ros-indigo-usb-cam
+RUN apt-get update &&\
+	apt-get install -y \
+	ros-indigo-usb-cam \
+	vim
 
 COPY  camera.yaml /root/.ros/camera_info/head_camera.yaml
-RUN mkdir live_slam.sh &\
-	echo "#!/bin/bash\n\
+RUN echo "#!/bin/bash\n\
 	roscore &\
 	rosrun usb_cam usb_cam_node &\
 	rosrun lsd_slam_viewer viewer &\
 	rosrun lsd_slam_core live_slam image:=/usb_cam/image_raw camera_info:=/usb_cam/camera_info &\
-	rosrun rqt_reconfigure rqt_reconfigure" >> live_slam.sh
-RUN chmod 755 live_slam.sh
+	rosrun rqt_reconfigure rqt_reconfigure" >> live_slam.sh &&\
+	chmod 755 live_slam.sh
 
-RUN mkdir testbag_slam.sh &\
-	echo "#!/bin/bash\n\
+RUN echo "#!/bin/bash\n\
 	roscore &\
 	rosrun lsd_slam_viewer viewer &\
 	rosrun lsd_slam_core live_slam image:=/image_raw camera_info:=/camera_info &\
-	rosbag play /home/rosbuild_ws/package_dir/lsd_slam/LSD_room.bag" >> testbag_slam.sh
-RUN chmod 755 testbag_slam.sh
+	rosbag play /home/rosbuild_ws/package_dir/lsd_slam/LSD_room.bag" >> testbag_slam.sh &&\
+	chmod 755 testbag_slam.sh
 
 #COPY  bagbag.bag /home/rosbuild_ws/package_dir/lsd_slam/
-RUN mkdir ownbag_slam.sh &\
-	echo "#!/bin/bash\n\
+RUN echo "#!/bin/bash\n\
 	roscore &\
 	rosrun lsd_slam_viewer viewer &\
 	rosrun lsd_slam_core live_slam image:=/image_raw camera_info:=/camera_info &\
-	rosbag play /home/rosbuild_ws/package_dir/lsd_slam/bagbag.bag" >> ownbag_slam.sh
-RUN chmod 755 ownbag_slam.sh
+	rosbag play /home/rosbuild_ws/package_dir/lsd_slam/bagbag.bag" >> ownbag_slam.sh &&\
+	chmod 755 ownbag_slam.sh
