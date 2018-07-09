@@ -62,5 +62,5 @@ Ctrl+c → Ctrl+d
 + You should swap "camera.yaml" depending on your webcam.  
 You can get it by camera_calibration from ROS.
 + Wide view cameras would be better.
-+ Global shutter is recomended.
++ Global shutter is recomended(CCD cameras).
 + Auto focus cameras would not work well(?).
