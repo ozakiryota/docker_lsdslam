@@ -137,6 +137,7 @@ RUN rm /bin/sh && mv /bin/sh_tmp /bin/sh
 ########## Running comands ##########
 RUN apt-get update && apt-get install -y ros-indigo-usb-cam
 
+COPY  camera.yaml /root/.ros/camera_info/head_camera.yaml
 RUN mkdir live_slam.sh &\
 	echo "#!/bin/bash\n\
 	roscore &\
