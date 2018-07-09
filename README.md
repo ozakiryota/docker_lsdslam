@@ -36,11 +36,13 @@ Delete line 15.
 		($ cd ~/docker_ws/lsdslam)
 		$ ./run_docker.sh lsdslam:latest	//use your image name insted of "lsdslam:latest"
 ### 5. Run
-+ live_slam with your webcam  
++ live_slam with your webcam
+
 		//Inside of the container
 		($ cd /home/rosbuild_ws)
 		$ ./live_slam
-+ slam with the test bagfile from http://vmcremers8.informatik.tu-muenchen.de/lsd/LSD_room.bag.zip  
++ slam with the test bagfile from http://vmcremers8.informatik.tu-muenchen.de/lsd/LSD_room.bag.zip
+
 		//Inside of the container
 		($ cd /home/rosbuild_ws)
 		$ ./testbag_slam
@@ -49,7 +51,8 @@ You need to set your bagfile inside of a directory which has the Dockerfile.
 And delete "#" at line 157 of Dockerfile like below, then build.  
 
 @Dockerfile  
-157 COPY  bagbag.bag /home/rosbuild_ws/package_dir/lsd_slam	//use your bagfile name instead of "bagbag.bag"  
+157 COPY  bagbag.bag /home/rosbuild_ws/package_dir/lsd_slam	//use your bagfile name instead of "bagbag.bag"
+
 		//Inside of the container
 		($ cd /home/rosbuild_ws)
 		$ ./testbag_slam
@@ -61,3 +64,6 @@ You can get it by camera_calibration from ROS.
 + Wide view cameras would be better.
 + Global shutter is recomended.
 + Auto focus cameras would not work well(?).
+
+
+'test'
