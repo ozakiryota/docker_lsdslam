@@ -55,7 +55,7 @@ And delete "#" at line 157 of Dockerfile like below, then build.
 
 		//Inside of the container
 		($ cd /home/rosbuild_ws)
-		$ ./testbag_slam
+		$ ./ownbag_slam
 ### 6. Quit
 Ctrl+c → Ctrl+d
 ## Other things
