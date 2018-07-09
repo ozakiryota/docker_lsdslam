@@ -48,8 +48,9 @@ Delete line 15.
 You need to set your bagfile inside of a directory which has the Dockerfile.  
 And delete "#" at line 157 of Dockerfile like below, then build.  
 
-@Dockerfile
-157 COPY  bagbag.bag /home/rosbuild_ws/package_dir/lsd_slam
+@Dockerfile  
+157 COPY  bagbag.bag /home/rosbuild_ws/package_dir/lsd_slam	//use your bagfile name instead of "bagbag.bag"
+
 		//Inside of the container
 		($ cd /home/rosbuild_ws)
 		$ ./testbag_slam
