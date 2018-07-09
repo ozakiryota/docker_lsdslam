@@ -14,13 +14,7 @@ You need to install "Recuirements" above.
 		$ mkdir -p ~/docker_ws/lsdslam
 		$ cd ~/docker_ws/lsdslam
 		$ git clone https://github.com/ozakiryota/docker_lsdslam
-### (2. Modify the Dockerfile depending on your want)
-The defalt work the Docker does first when it is run is live_slam with your own camera.  
-You can change to using the test bagfile, your own bagfile... by modify Dockerfile  
-
-@Dockerfile  
-line 113~end delete or add "#" to each line
-### 3. Docker build
+### 2. Docker build
 		($ cd ~/docker_ws/lsdslam)
 		$ docker build -t lsdslam:latest .	//you can change the image name
 This would take long time to finish.  
@@ -32,15 +26,33 @@ You can make it shorter like below if you don't need the test bagfile,
 71 # RUN unzip LSD_room.bag.zip  
 
 You can also delete opencv part if you don't need.
-### (4. Modify the script file)
+### (3. Modify the script file)
 You need to fix your webcam in the script file.  
 + Using your webcam  
 Make sure line 15 "--device=/dev/video1:/dev/video0 \".
 + Using just bagfile, not your webcam  
 Delete line 15.
-### 5. Run
+### 4. Get into the container
 		($ cd ~/docker_ws/lsdslam)
 		$ ./run_docker.sh lsdslam:latest	//use your image name insted of "lsdslam:latest"
+### 5. Run
++ live_slam with your webcam
+		//Inside of the container
+		($ cd /home/rosbuild_ws)
+		$ ./live_slam
++ slam with the test bagfile from http://vmcremers8.informatik.tu-muenchen.de/lsd/LSD_room.bag.zip
+		//Inside of the container
+		($ cd /home/rosbuild_ws)
+		$ ./testbag_slam
++  slam with your own bagfile  
+You need to set your bagfile inside of a directory which has the Dockerfile.  
+And delete "#" at line 157 of Dockerfile like below, then build.  
+
+@Dockerfile
+157 COPY  bagbag.bag /home/rosbuild_ws/package_dir/lsd_slam
+		//Inside of the container
+		($ cd /home/rosbuild_ws)
+		$ ./testbag_slam
 ### 6. Quit
 Ctrl+c → Ctrl+d
 ## Other things
