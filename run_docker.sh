@@ -4,8 +4,6 @@ if [ $# -ne 1 ]; then
   exit 1
 fi
 
-xhost +
-
 nvidia-docker run -it --rm \
 	--env="DISPLAY" \
 	--env="QT_X11_NO_MITSHM=1" \
