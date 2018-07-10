@@ -27,26 +27,28 @@ You can make it shorter like below if you don't need the test bagfile,
 
 You can also delete opencv part if you don't need.
 ### (3. Modify the script file)
-You need to fix your webcam in the script file.  
+You need to fix your webcam in the script file(run_docker.sh).  
 + Using your webcam  
-Make sure line 15 "--device=/dev/video1:/dev/video0 \".
+Make sure line 13 "--device=/dev/video1:/dev/video0 \".
 + Using just bagfile, not your webcam  
-Delete line 15.
-### 4. Get into the container
+Delete line 13.
+### 4. Set a permission for the shell script
+		$ chmod 755 run_docker.sh
+### 5. Get into the container
 		($ cd ~/docker_ws/lsdslam)
 		$ ./run_docker.sh lsdslam:latest	//use your image name insted of "lsdslam:latest"
-### 5. Run
-#### 5.a. live_slam with your webcam
+### 6. Run
+#### 6-a. live_slam with your webcam
 
 		//Inside of the container
 		($ cd /home/rosbuild_ws)
 		$ ./live_slam
-#### 5.b. slam with the test bagfile from http://vmcremers8.informatik.tu-muenchen.de/lsd/LSD_room.bag.zip
+#### 6-b. slam with the test bagfile from http://vmcremers8.informatik.tu-muenchen.de/lsd/LSD_room.bag.zip
 
 		//Inside of the container
 		($ cd /home/rosbuild_ws)
 		$ ./testbag_slam
-#### 5.c. slam with your own bagfile  
+#### 6-c. slam with your own bagfile  
 You need to set your bagfile inside of a directory which has the Dockerfile.  
 And delete "#" at line 157 of Dockerfile like below, then build.  
 
@@ -56,7 +58,7 @@ And delete "#" at line 157 of Dockerfile like below, then build.
 		//Inside of the container
 		($ cd /home/rosbuild_ws)
 		$ ./ownbag_slam
-### 6. Quit
+### 7. Quit
 Ctrl+c → Ctrl+d
 ## Other things
 + You should swap "camera.yaml" depending on your webcam.  
