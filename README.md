@@ -62,7 +62,8 @@ And delete "#" at line 157 of Dockerfile like below, then build.
 Ctrl+c → Ctrl+d
 ## Other things
 + You should swap "camera.yaml" depending on your webcam.  
-You can get it by camera_calibration from ROS.
+You can get it by camera_calibration from ROS.  
+In your yaml file, camera_name has to be head_camera.
 + Wide view cameras would be better.
 + Global shutter is recomended(CCD cameras).
 + Auto focus cameras would not work well(?).
