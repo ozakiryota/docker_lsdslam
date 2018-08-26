@@ -140,7 +140,7 @@ RUN apt-get update &&\
 	ros-indigo-usb-cam \
 	vim
 
-COPY  camera.yaml /root/.ros/camera_info/head_camera.yaml
+COPY camera.yaml /root/.ros/camera_info/head_camera.yaml
 RUN echo "#!/bin/bash\n\
 	roscore &\
 	rosrun usb_cam usb_cam_node &\
@@ -156,10 +156,25 @@ RUN echo "#!/bin/bash\n\
 	rosbag play /home/rosbuild_ws/package_dir/lsd_slam/LSD_room.bag" >> testbag_slam.sh &&\
 	chmod 755 testbag_slam.sh
 
-#COPY  bagbag.bag /home/rosbuild_ws/package_dir/lsd_slam/
+# COPY bagbag.bag /home/rosbuild_ws/package_dir/lsd_slam::Subscriber sub_obs = nh.subscribe("/g_usingwalls", 10, callback_observation_usingwalls);
 RUN echo "#!/bin/bash\n\
 	roscore &\
 	rosrun lsd_slam_viewer viewer &\
 	rosrun lsd_slam_core live_slam image:=/image_raw camera_info:=/camera_info &\
 	rosbag play /home/rosbuild_ws/package_dir/lsd_slam/bagbag.bag" >> ownbag_slam.sh &&\
 	chmod 755 ownbag_slam.sh
+
+# COPY  realsense.bag /home/rosbuild_ws/package_dir/lsd_slam/
+# RUN echo "#!/bin/bash\n\
+# 	roscore &\
+# 	rosrun lsd_slam_viewer viewer &\
+# 	rosrun lsd_slam_core live_slam image:=/camera/color/image_raw camera_info:=/camera/color/camera_info &\
+# 	rosbag play /home/rosbuild_ws/package_dir/lsd_slam/realsense.bag" >> ownbag_slam.sh &&\
+# 	chmod 755 ownbag_slam.sh
+
+RUN echo "#!/bin/bash\n\
+	roscore &\
+	rosrun lsd_slam_viewer viewer &\
+	rosrun lsd_slam_core live_slam image:=/camera/color/image_raw camera_info:=/camera/color/camera_info &\
+	rosrun rqt_reconfigure rqt_reconfigure" >> realsensebag.sh &&\
+	chmod 755 realsensebag.sh
