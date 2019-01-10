@@ -141,40 +141,40 @@ RUN apt-get update &&\
 	vim
 
 COPY camera.yaml /root/.ros/camera_info/head_camera.yaml
-RUN echo "#!/bin/bash\n\
-	roscore &\
-	rosrun usb_cam usb_cam_node &\
-	rosrun lsd_slam_viewer viewer &\
-	rosrun lsd_slam_core live_slam image:=/usb_cam/image_raw camera_info:=/usb_cam/camera_info &\
-	rosrun rqt_reconfigure rqt_reconfigure" >> live_slam.sh &&\
-	chmod 755 live_slam.sh
+RUN echo " \
+		#!/bin/bash\n\ \
+		roscore &\ 
+		rosrun usb_cam usb_cam_node &\
+		rosrun lsd_slam_viewer viewer &\
+		rosrun lsd_slam_core live_slam image:=/usb_cam/image_raw camera_info:=/usb_cam/camera_info &\
+		rosrun rqt_reconfigure rqt_reconfigure \
+	" >> live_slam_webcam.sh &&\
+	chmod 755 live_slam_webcam.sh
 
-RUN echo "#!/bin/bash\n\
-	roscore &\
-	rosrun lsd_slam_viewer viewer &\
-	rosrun lsd_slam_core live_slam image:=/image_raw camera_info:=/camera_info &\
-	rosbag play /home/rosbuild_ws/package_dir/lsd_slam/LSD_room.bag" >> testbag_slam.sh &&\
-	chmod 755 testbag_slam.sh
+RUN echo " \
+		#!/bin/bash\n\ \
+		roscore &\
+		rosrun lsd_slam_viewer viewer &\
+		rosrun lsd_slam_core live_slam image:=/image_raw camera_info:=/camera_info &\
+		rosbag play /home/rosbuild_ws/package_dir/lsd_slam/LSD_room.bag \
+	" >> test_LSD_room_bag.sh &&\
+	chmod 755 test_LSD_room_bag.sh
 
-# COPY bagbag.bag /home/rosbuild_ws/package_dir/lsd_slam::Subscriber sub_obs = nh.subscribe("/g_usingwalls", 10, callback_observation_usingwalls);
-RUN echo "#!/bin/bash\n\
-	roscore &\
-	rosrun lsd_slam_viewer viewer &\
-	rosrun lsd_slam_core live_slam image:=/image_raw camera_info:=/camera_info &\
-	rosbag play /home/rosbuild_ws/package_dir/lsd_slam/bagbag.bag" >> ownbag_slam.sh &&\
-	chmod 755 ownbag_slam.sh
+# COPY bagbag.bag /home/rosbuild_ws/package_dir/lsd_slam/
+RUN echo " \
+		#!/bin/bash\n\ \
+		roscore &\
+		rosrun lsd_slam_viewer viewer &\
+		rosrun lsd_slam_core live_slam image:=/image_raw camera_info:=/camera_info &\
+		rosbag play /home/rosbuild_ws/package_dir/lsd_slam/bagbag.bag \
+	" >> use_own_bag.sh &&\
+	chmod 755 use_own_bag.sh
 
-# COPY  realsense.bag /home/rosbuild_ws/package_dir/lsd_slam/
-# RUN echo "#!/bin/bash\n\
-# 	roscore &\
-# 	rosrun lsd_slam_viewer viewer &\
-# 	rosrun lsd_slam_core live_slam image:=/camera/color/image_raw camera_info:=/camera/color/camera_info &\
-# 	rosbag play /home/rosbuild_ws/package_dir/lsd_slam/realsense.bag" >> ownbag_slam.sh &&\
-# 	chmod 755 ownbag_slam.sh
-
-RUN echo "#!/bin/bash\n\
-	roscore &\
-	rosrun lsd_slam_viewer viewer &\
-	rosrun lsd_slam_core live_slam image:=/camera/color/image_raw camera_info:=/camera/color/camera_info &\
-	rosrun rqt_reconfigure rqt_reconfigure" >> realsensebag.sh &&\
-	chmod 755 realsensebag.sh
+RUN echo " \
+		#!/bin/bash\n\ \
+		roscore &\
+		rosrun lsd_slam_viewer viewer &\
+		rosrun lsd_slam_core live_slam image:=/camera/color/image_raw camera_info:=/camera/color/camera_info &\
+		rosrun rqt_reconfigure rqt_reconfigure \
+	" >> live_slam_realsense.sh &&\
+	chmod 755 live_slam_realsense.sh

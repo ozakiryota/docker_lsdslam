@@ -1,8 +1,8 @@
 #!/bin/bash
 
-if [ $# -ne 1 ]; then
-  exit 1
-fi
+# if [ $# -ne 1 ]; then
+#   exit 1
+# fi
 
 xhost +
 
@@ -12,5 +12,6 @@ nvidia-docker run -it --rm \
 	--volume="/tmp/.X11-unix:/tmp/.X11-unix:rw" \
 	--device=/dev/video1:/dev/video0 \
 	--net=host \
-	$1
+	lsdslam
+	# $1
 
