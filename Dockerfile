@@ -108,6 +108,7 @@ RUN apt-get update &&\
 	libavcodec-dev libavformat-dev libswscale-dev libv4l-dev &&\
 	cd /home &&\
 	wget https://github.com/Itseez/opencv/archive/2.4.8.zip &&\
+	apt-get update && apt-get install -y unzip &&\
 	unzip 2.4.8.zip &&\
 	cd opencv-2.4.8 &&\
 	mkdir build &&\
