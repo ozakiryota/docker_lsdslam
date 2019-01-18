@@ -141,7 +141,8 @@ RUN apt-get update &&\
 	ros-indigo-usb-cam \
 	vim
 
-COPY camera.yaml /root/.ros/camera_info/head_camera.yaml
+COPY logicool.yaml /root/.ros/camera_info/head_camera.yaml
+# COPY ibuffaro.yaml /root/.ros/camera_info/head_camera.yaml
 RUN echo " \
 		#!/bin/bash\n\ \
 		roscore &\ 
